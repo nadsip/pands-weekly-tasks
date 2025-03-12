@@ -1,17 +1,16 @@
 # bank.py
+# author: Nadyarini Sianipar
 
-# Prompt the user to enter the first amount in cents
-amount1 = int(input("Enter amount1 (in cent): "))
+# read the two amounts in cents from the user
+amount1 = int(input("Enter amount1(in cent): "))
+amount2 = int(input("Enter amount2(in cent): "))
 
-# Prompt the user to enter the second amount in cents
-amount2 = int(input("Enter amount2 (in cent): "))
-
-# Add the two amounts together
+# Add the two amounts
 total_cents = amount1 + amount2
 
-# Convert the total amount from cents to euros and cents
-total_euros = total_cents // 100  # Get the euro part
-total_remaining_cents = total_cents % 100  # Get the remaining cents
+# Convert total cents into euros and cents
+euros = total_cents // 100
+cents = total_cents % 100
 
 # Print the result in a human-readable format with a euro sign and decimal point
-print(f"The sum of these is €{total_euros}.{total_remaining_cents:02d}")
+print(f"The sum of these is €{euros}.{cents:02d}")
