@@ -2,28 +2,38 @@
 #
 # Author: Nadyarini Sianipar
 
-def sqrt(a):
+def sqrt(x):
     """
     Approximates the square root of a positive number using the Newton-Raphson method.
     """
-    if a <= 0:
-        raise ValueError("Input must be a positive number.")
-    # Initial guess
-    x = a / 2.0
+    estimate = x / 2.0 # initial guess for the square root
+        
+    # lambda function
+    update_estimate = lambda e: (e + x / e) / 2.0
     # 
     while True:
-        next_x = (x + a / x) / 2
-        if abs(next_x -x) < 1e-10:
+        new_estimate = update_estimate(estimate)
+        if abs(new_estimate - estimate) < 1e-10:
             break
-        x = next_x
-    return x
+        estimate = new_estimate
+
+    return new_estimate
 # Get user input and compute the square root
-try:
-    number = float(input("Please enter a positive number: "))
-    if number <= 0:
-        print("Please enter a positive number.")
-    else:
-        approximation = sqrt(number)
-        print(f"The square root of {number} is approx. {approximation:.1f}.")
-except ValueError:
-    print("Invalid input. Please enter a numeric value.")
+def main():
+    while True:
+        try:
+            num = float(input("Please enter a positive number: "))
+            if num > 0:
+                break
+            else :
+                print("Error: Please enter a positive number.")
+        except ValueError :
+            print("Error : Invalid input. Please enter a number.")
+    # calculate the square root
+    result = sqrt(num)
+
+    # Output the result rounded to one decimal place
+    print(f"The square root of {num} is approx. {round(result, 1)}.")
+
+if __name__ == "__main__" :
+    main()
